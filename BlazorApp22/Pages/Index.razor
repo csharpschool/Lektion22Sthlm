@@ -1,0 +1,26 @@
+﻿@page "/"
+@using BlazorApp22.Classes;
+@using BlazorApp22.Extensions;
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+<button class="btn btn-primary" @onclick="Total">Total</button>
+
+
+@code{
+    Product prod = new()
+        {
+            Category = Categories.Books,
+            Count = 2,
+            Name = "My book",
+            Price = 10        
+    };
+
+    void Total()
+    {
+        //var price = prod.CalculatePrice().CalculateTotal(); // Product
+        var price = prod.CalculatePrice().CalculateTotal(prod.Count); // double
+    }
+}

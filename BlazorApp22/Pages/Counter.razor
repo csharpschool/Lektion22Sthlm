@@ -1,0 +1,30 @@
+﻿@page "/counter"
+@using Business.Classes;
+@using Common.Classes;
+@inject Processor p
+
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+<div>@message</div>
+
+@code {
+    Employee empl = new(Roles.Employee, "Otto", 10000, 1);
+    Employee manager = new(Roles.Manager, "Svein", 20000, 2);
+    string message = string.Empty;
+
+    private void IncrementCount()
+    {
+        try
+        {
+            //p.UpdateSallay(empl, 1, 50000);
+            //p.UpdateSallay(empl, 2, 200);
+            //p.UpdateSallay(manager, 2, 5000000);
+            p.UpdateSallay(manager, 1, 25000);
+        }
+        catch (Exception ex)
+        {
+            message = ex.Message;
+        }
+    }
+}
